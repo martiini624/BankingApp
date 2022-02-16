@@ -17,12 +17,12 @@ namespace BankingApp
 
         public decimal Balance { get; private set; }
 
-        public void MakeDeposit(decimal amount)
+        public void MakeDeposit(decimal amount, DateTime date, string note)
         {
             throw new NotImplementedException();
         }
 
-        public void Withdrawal(decimal amount)
+        public void Withdrawal(decimal amount, DateTime date, string note)
         {
             throw new NotImplementedException();
         }
