@@ -22,7 +22,7 @@ namespace BankingApp
 
         public void MakeDeposit(decimal amount)
         {
-            throw new NotImplementedException();
+            this.Balance += amount;
         }
 
         public void Withdrawal(decimal amount)
