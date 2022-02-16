@@ -12,8 +12,7 @@ namespace BankingApp
         {
             this.AccountOwner = accountOwner;
             this.AccountNumber = "1234567890";
-            Transcation initalAmount = new Transcation(initalBalance, DateTime.Now, "Inital Balance");
-            transactionHistory.Add(initalAmount);
+            this.MakeDeposit(initalBalance, DateTime.Now, "Inital Balance");
         }
 
         public string AccountOwner { get; private set; }
@@ -30,6 +29,11 @@ namespace BankingApp
 
         public void MakeDeposit(decimal amount, DateTime date, string note)
         {
+            if(amount <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(amount), "Amount must be positive");
+            }
+
             var deposit = new Transcation(amount, date, note);
             transactionHistory.Add(deposit);
         }
