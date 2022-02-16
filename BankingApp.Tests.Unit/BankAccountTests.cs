@@ -7,15 +7,15 @@ namespace BankingApp.Tests.Unit
     public class BankAccountTests
     {
         [Fact]
-        public void ShouldCreateBankAccountWithZeroBalance()
+        public void ShouldCreateBankAccountWithPostiveBalance()
         {
             // given
-            var account = new BankAccount("Martyn Hughes", 0);
+            var account = new BankAccount("Martyn Hughes", 10);
 
             // when
 
             // then
-            account.Balance.Should().Be(0);
+            account.Balance.Should().Be(10);
         }
         
         [Fact]
@@ -34,14 +34,33 @@ namespace BankingApp.Tests.Unit
         public void ShouldMakeDeposit()
         {
             // given
-            var account = new BankAccount("Martyn Hughes", 0);
+            var account = new BankAccount("Martyn Hughes", 10);
 
             // when
             account.MakeDeposit(50, DateTime.Now, "50 from Family");
             account.MakeDeposit(25, DateTime.Now, "Pocket Money");
 
             // then
-            account.Balance.Should().Be(75);
+            account.Balance.Should().Be(85);
+        }
+        
+        [Fact]
+        public void ShouldNotCreateBankAccountWithNonPostiveBalance()
+        {
+            try
+            {
+                // given
+                var account = new BankAccount("Martyn Hughes", 0);
+
+                // when
+
+                // then
+                Assert.Fail("Expected an exception");
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                ex.Message.Should().Be("Amount must be positive");
+            }
         }
     }
 }
