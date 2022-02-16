@@ -19,7 +19,7 @@ Definition of a transaction
 
 USE TDD (Test Driven Design)  
 - Each issue MUST have its own branch created from MASTER with a PULL REQUEST once the feature is completed
-- Branched must be vreated in the format "users\%username%\%category%-%entity%-%action%" i.e. users\martiini624\data-bankaccount-deposits
+- Branched must be vreated in the format "users/%username%/%category%-%entity%-%action%" i.e. users/martiini624/data-bankaccount-deposits
   - %username% your username
   - %category% the category i.e.  DATA, BROKERS, FOUNDATIONS etc
   - %entity% the thing that you are working on
