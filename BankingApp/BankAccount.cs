@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BankingApp
 {
@@ -11,8 +12,8 @@ namespace BankingApp
         {
             this.AccountOwner = accountOwner;
             this.AccountNumber = "1234567890";
-            Transcation deposit = new Transcation(initalBalance, DateTime.Now, "Inital Balance");
-            transactionHistory.Add(deposit);
+            Transcation initalAmount = new Transcation(initalBalance, DateTime.Now, "Inital Balance");
+            transactionHistory.Add(initalAmount);
         }
 
         public string AccountOwner { get; private set; }
@@ -23,13 +24,7 @@ namespace BankingApp
         {
             get
             {
-                decimal balance = 0;
-                foreach (var item in transactionHistory)
-                {
-                    balance += item.Amount;
-                }
-
-                return balance;
+                return transactionHistory.Sum(item => item.Amount);
             }
         }
 
