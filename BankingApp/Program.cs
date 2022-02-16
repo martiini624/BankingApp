@@ -1,12 +1,14 @@
 ﻿using System;
-
+using BankingApp;
 namespace BankingApp
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            BankAccount newUser = new BankAccount("Martyn", 0);
+           
+
         }
     }
 }
