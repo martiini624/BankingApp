@@ -37,10 +37,11 @@ namespace BankingApp.Tests.Unit
             var account = new BankAccount("Martyn Hughes", 0);
 
             // when
-            account.MakeDeposit(5000, DateTime.Now, "5000 from Family");
-            
+            account.MakeDeposit(50, DateTime.Now, "50 from Family");
+            account.MakeDeposit(25, DateTime.Now, "Pocket Money");
+
             // then
-            account.Balance.Should().Be(5000);
+            account.Balance.Should().Be(75);
         }
     }
 }
