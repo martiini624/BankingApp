@@ -44,13 +44,15 @@ namespace BankingApp.Tests.Unit
             account.Balance.Should().Be(85);
         }
         
-        [Fact]
-        public void ShouldNotCreateBankAccountWithNonPostiveBalance()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-5)]
+        public void ShouldNotCreateBankAccountWithNonPostiveBalance(decimal amount)
         {
             try
             {
                 // given
-                var account = new BankAccount("Martyn Hughes", 0);
+                var account = new BankAccount("Martyn Hughes", amount);
 
                 // when
 
@@ -59,7 +61,7 @@ namespace BankingApp.Tests.Unit
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                ex.Message.Should().Be("Amount must be positive");
+                ex.Message.Should().StartWith("Amount must be positive");
             }
         }
     }
